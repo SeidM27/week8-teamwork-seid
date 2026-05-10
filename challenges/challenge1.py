@@ -5,3 +5,15 @@
 import csv
 
 # Your code here
+import csv
+from pathlib import Path
+minimum = int(input("Minimum votes to display: "))
+counts = {}
+with open(csv_path, "r", newline="") as file:
+reader = csv.DictReader(file)
+for row in reader:
+language = row["language"]
+counts[language] = counts.get(language, 0) + 1
+for language in sorted(counts, key=counts.get, reverse=True):
+if counts[language] >= minimum:
+print(f"{language}: {counts[language]}")
