@@ -13,3 +13,5 @@ with open("favorites.csv", "r") as file:
     # TODO: Create a csv.DictReader (not csv.reader)
     # TODO: Loop over rows and print row["language"]
     pass
+import csv
+from pathlib import Path
