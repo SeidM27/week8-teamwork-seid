@@ -14,3 +14,6 @@ with open("favorites.csv", "r") as file:
         # TODO: Store row[1] in a variable called 'favorite'
         # TODO: Print favorite
         pass
+        import csv
+from pathlib import Path
+
