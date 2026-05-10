@@ -39,3 +39,22 @@ average = ???
 print("=== Quiz Grade Summary ===")
 # TODO: Print all summary lines matching the expected output format
 # Hint: use f-strings. For alignment, try f"{label:<20} {value}"
+students = []
+while True:
+name = input("Student name (or done): ")
+if name.lower() == "done":
+break
+score = float(input("Score: "))
+students.append({"name": name, "score": score})
+if students:
+total = sum(student["score"] for student in students)
+average = total / len(students)
+highest = max(students, key=lambda student: student["score"])
+lowest = min(students, key=lambda student: student["score"])
+print("\n=== Grade Tracker Report ===")
+print(f"Average score: {average:.2f}")
+print(f"Highest score: {highest['name']} - {highest['score']}")
+print(f"Lowest score: {lowest['name']} - {lowest['score']}")
+else:
+print("No students entered.")
+
