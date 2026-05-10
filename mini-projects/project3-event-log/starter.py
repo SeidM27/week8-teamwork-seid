@@ -65,3 +65,20 @@ for event in large_events_sorted:
     # TODO: print each event formatted like:
     # "  2025-03-03 | Room A  | Lecture  |  90 attendees"
     pass
+    import csv
+from pathlib import Path
+from collections import Counter
+if not log_file.exists():
+print("event_log.csv not found.")
+else:
+event_counts = Counter()
+with open(log_file, "r", newline="") as file:
+reader = csv.DictReader(file)
+for row in reader:
+event_type = row.get("event", "").strip()
+if event_type:
+event_counts[event_type] += 1
+print("=== Event Log Report ===")
+for event, count in event_counts.most_common():
+print(f"{event}: {count}")
+
