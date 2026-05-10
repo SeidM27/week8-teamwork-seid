@@ -22,3 +22,13 @@ db = SQL("sqlite:///favorites.db")
 #       Pass the user's input as the second argument to db.execute()
 # TODO: Get the first (and only) row from the result
 # TODO: Print row["n"]
+import sqlite3
+from pathlib import Path
+language = input("Language: ")
+connection.row_factory = sqlite3.Row
+rows = cursor.execute(
+"SELECT problem, COUNT(*) AS n FROM favorites WHERE language = ? GROUP BY problem ORDER BY n DESC",
+(language,)
+).fetchall()
+for row in rows:
+print(f"{row['problem']}: {row['n']}")
