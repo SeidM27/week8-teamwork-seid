@@ -25,3 +25,16 @@ with open("../week1/favorites.csv", "r") as file:
 #   Python: 196
 #   C: 40
 #   Scratch: 28
+import csv
+from pathlib import Path
+counts = {}
+with open(csv_path, "r", newline="") as file:
+reader = csv.DictReader(file)
+for row in reader:
+favorite = row["language"]
+try:
+counts[favorite] += 1
+except KeyError:
+counts[favorite] = 1
+for favorite in sorted(counts, key=counts.get, reverse=True):
+print(f"{favorite}: {counts[favorite]}")
