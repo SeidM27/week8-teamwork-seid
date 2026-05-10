@@ -143,3 +143,25 @@ for row in rows:
 # CLEANUP
 # ══════════════════════════════════════════════════════════════════════════════
 conn.close()
+import csv
+from pathlib import Path
+from collections import Counter
+language_counts = Counter()
+problem_counts = Counter()
+total = 0
+with open(csv_path, "r", newline="") as file:
+reader = csv.DictReader(file)
+for row in reader:
+language_counts[row["language"]] += 1
+problem_counts[row["problem"]] += 1
+total += 1
+print("=== Survey Dashboard ===")
+print(f"Total responses: {total}")
+print("\nLanguages:")
+for language, count in language_counts.most_common():
+percentage = (count / total) * 100
+print(f"{language:<10} {count:>3} ({percentage:.2f}%)")
+print("\nTop Problems:")
+for problem, count in problem_counts.most_common(5):
+print(f"{problem:<25} {count}")
+Optional Challenges
