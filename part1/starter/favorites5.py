@@ -24,3 +24,16 @@ with open("favorites.csv", "r") as file:
 
     # TODO: Print each key-value pair in counts
     #       Format: "Python: 196"
+import csv
+from pathlib import Path
+counts = {}
+with open(csv_path, "r", newline="") as file:
+reader = csv.DictReader(file)
+for row in reader:
+favorite = row["language"]
+if favorite in counts:
+counts[favorite] += 1
+else:
+counts[favorite] = 1
+for favorite in counts:
+print(f"{favorite}: {counts[favorite]}")
